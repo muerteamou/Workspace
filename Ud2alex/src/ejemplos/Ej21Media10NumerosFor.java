@@ -9,12 +9,13 @@ public class Ej21Media10NumerosFor {
     Scanner s = new Scanner(System.in);
     int numeroLeido, suma=0;
     for (int i=1; i<11; i++) {
-    	System.out.println("Introduce número: " + i + "--> ");
+    	System.out.println("Introduce nï¿½mero: " + i + "--> ");
     	numeroLeido=s.nextInt();
     	suma=suma+numeroLeido;
     	
     }
     
     System.out.println("La media  de ellos es " + ((double) suma/10));
+  s.close();
   }
 }

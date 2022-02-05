@@ -9,9 +9,10 @@ public class Ej11SentenciaIf {
     int x = s.nextInt();
 
     if (x < 0) {
-      System.out.printf("El número %d es negativo.",x);
+      System.out.printf("El nï¿½mero %d es negativo.",x);
     } else {
-      System.out.printf("El número %d es positivo.",x);
+      System.out.printf("El nï¿½mero %d es positivo.",x);
     }
+    s.close();
   }
 }

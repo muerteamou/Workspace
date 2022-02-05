@@ -8,25 +8,25 @@ public class ejercicio05verAlejandro {
 		Scanner s = new Scanner(System.in);
 		char x;
 		System.out.println("Introduce un caracter: ");
-		x = s.nextLine().charAt(0); // recojo sólo el primer caracter por si introducen mas.
+		x = s.nextLine().charAt(0); // recojo sï¿½lo el primer caracter por si introducen mas.
 		//System.out.println(x);
 		
 			if (x >= 48 && x <= 57 ){
-				System.out.println( x + " es un número.");
+				System.out.println( x + " es un nï¿½mero.");
 				System.exit(0);
 			}
 			if (x >=65 && x<=90) {
-				System.out.println( x + " es un letra mayúscula.");
+				System.out.println( x + " es un letra mayï¿½scula.");
 				System.exit(0);
 			}
 			if (x>=97 && x<=122) {
-				System.out.println( x + " es un letra minúscula.");
+				System.out.println( x + " es un letra minï¿½scula.");
 				System.exit(0);
 			}
 		
-			System.out.println(x + " No es un caracter alfanumérico");
+			System.out.println(x + " No es un caracter alfanumï¿½rico");
 
-			
+			s.close();
 		//(int) x = x;
 		
 		

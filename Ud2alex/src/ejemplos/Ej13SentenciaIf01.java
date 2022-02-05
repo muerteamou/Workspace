@@ -9,13 +9,14 @@ import java.util.Scanner;
 
 public class Ej13SentenciaIf01 {
   public static void main(String[] args) {   
-    System.out.print("¿Cuál es la capital de España? ");
+    System.out.print("ï¿½Cuï¿½l es la capital de Espaï¿½a? ");
     Scanner s = new Scanner(System.in);
     String respuesta=s.nextLine();
     if (respuesta.equals("Madrid")) {
-    	System.out.println("¡Acertaste!");
+    	System.out.println("ï¿½Acertaste!");
     } else {
         System.out.println("Lo siento, es Madrid");
     }
+    s.close();
   }
 }

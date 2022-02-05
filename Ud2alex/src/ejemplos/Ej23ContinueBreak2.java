@@ -14,5 +14,6 @@ public class Ej23ContinueBreak2 {
       i++;
     } 
     System.out.println("Cuenta vale: " + cuenta + " e i--> " + i);
+    s.close();
   }
 }
