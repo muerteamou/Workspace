@@ -17,6 +17,4 @@ public class Disco extends Multimedia {
 	public String toString() {
 		return "Disco: " + super.toString() + "\nGénero: " + genero + "\n";
 	}
-	
-
 }

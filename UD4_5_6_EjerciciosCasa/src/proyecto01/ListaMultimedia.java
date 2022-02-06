@@ -36,12 +36,11 @@ public class ListaMultimedia {
 	public int cuantosRock() {
 		int sumador = 0;
 
-		for (Multimedia mm : listaMultimedia) { // rrecorrenmos el arraylist..
-			if (mm instanceof Disco) { // comprobamos si es una instancia de disco
-				if (((Disco) mm).getGenero().toLowerCase().contains("rock")) // Se hace un casteo del objeto Multimedia
-																				// a Disco, si getGenero contiene rock,
-																				// añadimos 1
-					sumador++;
+		for (Multimedia mm : listaMultimedia) { 	// rrecorrenmos el arraylist..
+			if (mm instanceof Disco) { 				// comprobamos si es una instancia de disco
+				if (((Disco) mm).getGenero().toLowerCase().contains("rock")) 	// Se hace un casteo del objeto Multimedia
+					sumador++;														// a Disco, si getGenero contiene rock,
+																				// añadimos 1	
 			}
 		}
 		return sumador;
