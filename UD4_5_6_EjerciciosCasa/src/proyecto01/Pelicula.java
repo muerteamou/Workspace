@@ -14,6 +14,7 @@ public class Pelicula extends Multimedia {
 
 	@Override
 	public String toString() {
+		//voy a comprobar todos los casos para que se imprima según los atributos que tenga el objeto pelicula.
 		if (actorP == null)
 			return "Pelicula: " + super.toString() + "\nActriz Protagonista: " + actrizP + "\n";
 		if (actrizP == null)
