@@ -1,7 +1,7 @@
 package ejemplos;
 /*
- * Ampliación ejemplos Alberto octubre 2019
- * Ver detrás de Ej18For,Ej18For2, Ej18For3, Ej18For4
+ * Ampliaciï¿½n ejemplos Alberto octubre 2019
+ * Ver detrï¿½s de Ej18For,Ej18For2, Ej18For3, Ej18For4
  */
 public class Ej18For5 {
   public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Ej18For5 {
 	  for(int i = 0; i <= 100; i += 5) 
 	      contador++;
 	  System.out.println("Entre 0 y 100 hay " + contador 
-			  				+ " múltiplos de 5");
+			  				+ " mÃºltiplos de 5");
     
   }
 }

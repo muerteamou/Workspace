@@ -9,7 +9,7 @@ public class Ej21Media10NumerosFor {
     Scanner s = new Scanner(System.in);
     int numeroLeido, suma=0;
     for (int i=1; i<11; i++) {
-    	System.out.println("Introduce n�mero: " + i + "--> ");
+    	System.out.println("Introduce número: " + i + "--> ");
     	numeroLeido=s.nextInt();
     	suma=suma+numeroLeido;
     	

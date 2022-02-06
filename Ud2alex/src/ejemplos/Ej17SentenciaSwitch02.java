@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ej17SentenciaSwitch02 {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		System.out.print("Por favor, introduzca un numero de mes: ");
+		System.out.print("Por favor, introduzca un número de mes: ");
 		int mes = s.nextInt();
 
 		String nombreDelMes;

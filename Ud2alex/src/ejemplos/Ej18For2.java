@@ -1,7 +1,7 @@
 package ejemplos;
 /*
- * AmpliaciÛn ejemplos Alberto octubre 2019
- * Ver detr·s de Ej18For
+ * Ampliaci√≥n ejemplos Alberto octubre 2019
+ * Ver detr√°s de Ej18For
  */
 public class Ej18For2 {
   public static void main(String[] args) {
