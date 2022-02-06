@@ -14,5 +14,6 @@ public class Ej09LeeDatosScanner02 {
     int edad = s.nextInt();
     
     System.out.println("Tu nombre es " + nombre + " y tu edad es " + edad);
+    s.close();
   }
 }

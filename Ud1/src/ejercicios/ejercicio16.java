@@ -54,6 +54,7 @@ public class ejercicio16 {
 		System.out.println("Billetes de 10 euros: " + b10);
 		System.out.println("Billetes de 5 euros: " + b5);
 		System.out.println("Euros en monedas: " + mon);
+		s.close();
 	}
 
 }
