@@ -31,5 +31,5 @@ public class Libro extends Papel implements Prestable{
 		else
 			System.out.println("El libro no está prestado!");
 	}
-	
+
 }
