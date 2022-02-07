@@ -43,7 +43,7 @@ public class Main {
 		
 		//System.out.println("Hay " + publicaciones.publicacionesAnterioresA(anyo) + " publicaciones anteriores a " + anyo);
 	}
-	private static int cuentaPrestados(Papel publi) {
+	private static int cuentaPrestados(Libro publi) {
 		int contador=0;
 		if (publi instanceof Libro) {
 			for (Libro al : publi) {
