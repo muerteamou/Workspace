@@ -34,19 +34,17 @@ public class Multimedia {
 		return Objects.hash(autor, titulo);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Multimedia obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Multimedia other = (Multimedia) obj;
-		return (this.autor.equalsIgnoreCase(other.getAutor()) && this.titulo.equalsIgnoreCase(other.getTitulo()));
+		
+		return (autor.equalsIgnoreCase(obj.getAutor()) && titulo.equalsIgnoreCase(obj.getTitulo()));
 	}
 
-	@Override
 	public String toString() {
 		return titulo + "\nAutor: " + autor + "\nFormato: " + formato + "\nDuracion: " + duracion;
 	}

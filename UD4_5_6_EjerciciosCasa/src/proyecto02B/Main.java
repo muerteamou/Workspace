@@ -1,8 +1,7 @@
 package proyecto02B;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+
 
 public class Main {
 
