@@ -1,6 +1,7 @@
 package ejemplos;
 
 public class Ej15OperadoresLogicos02 {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		boolean a = true;
 		boolean b = false;

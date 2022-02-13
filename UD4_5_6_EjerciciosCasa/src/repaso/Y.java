@@ -10,7 +10,7 @@ public class Y extends B{
 
 	@Override
 	public String toString() {
-		return "t=" + t + super.toString();
+		return "t=" + t + ", " + super.toString() ;
 	}
 
 	public String getT() {
