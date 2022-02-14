@@ -9,23 +9,31 @@ public class ejercicio17 {
 		Scanner s = new Scanner(System.in);
 		
 		int cantidadPrestada;
-		int interesAnual;
-		int interesMensual;
+		double interesAnual;
+		
 		double pagoMensual;
 		int anyos;
 		int numeroPagos;
 		
-		System.out.print("Introduce la cantidad prestada: ");
+		System.out.println("Introduce la cantidad prestada: ");
 		cantidadPrestada = s.nextInt();
-		System.out.print("Introduzca el interés anual en %");
-		
+		System.out.println("Introduzca el interés anual en %");
+		interesAnual = s.nextDouble();
+		System.out.println("Introduzca la duración en años");
+		anyos = s.nextInt();
 		
 		System.out.println("===========================================================");
+		
 		System.out.print("Resultado de la operación");
-		System.out.print("Cantidad prestada: " + cantidadPrestada + " euros");
-		System.out.print(" euros");
-		System.out.print("Interés anual");		
-		System.out.print("Duración en años del prestamo");
+		double interesMensual= ((interesAnual/100)/12);
+		numeroPagos = anyos*12;
+		pagoMensual = ((cantidadPrestada*interesMensual)/ (1-(1/Math.pow((1+interesMensual), numeroPagos))));
+		System.out.println("Cantidad prestada: " + cantidadPrestada + " euros");
+		System.out.println("Interés anual " + interesAnual + "%");		
+		System.out.println("Duración en años del prestamo: " + anyos);
+		System.out.println("Número de pagos: " + numeroPagos);
+		System.out.println("Pago Mensual :" + pagoMensual + " euros");
+		System.out.println("Cantidad total a pagar : " + (numeroPagos*pagoMensual) + " euros");
 		s.close();		
 
 	}
