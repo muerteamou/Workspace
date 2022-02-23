@@ -13,23 +13,24 @@ public class _05Swing05 extends JFrame implements ActionListener {
     panel = this.getContentPane();
     boton = new JButton("Pulsa!");
     panel.add(boton);
-    boton.addActionListener(this);
+    boton.addActionListener(this); //añado el boton a la lista de eventos a comprobar y el this significa que se controla dentro de la propia clase
     setSize(400, 200);
     setVisible(true);
     
     setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
-  public void actionPerformed(ActionEvent e) {
+  public void actionPerformed(ActionEvent e) {  //ActionEvent espera la pulsación de botón
   //  Toolkit.getDefaultToolkit().beep();
 	  JOptionPane.showMessageDialog(panel,
-		      "Has pulsado el bot�n",
+		      "Has pulsado el botón",
 		      "Lo hiciste! ",
 		       JOptionPane.INFORMATION_MESSAGE);
 	  
   }
 
-  public static void main(String args[]) {
+  @SuppressWarnings("unused")
+public static void main(String args[]) {
     _05Swing05 ventana = new _05Swing05();
   }
 }
