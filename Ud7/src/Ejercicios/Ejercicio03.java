@@ -1,8 +1,5 @@
 package Ejercicios;
-/*Escribe una clase con un método que reciba por parámetro el nombre de un fichero de
-texto (que habrás creado con anterioridad) y cuente el número de palabras que contiene.
-Incluye también el tratamiento de excepciones.
-*/
+
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -22,7 +19,7 @@ public class Ejercicio03 {
 		}
 		fr.close();
 		
-		trozos=cadena.split(" ");
+		trozos=cadena.split("[ , \n]");
 		System.out.println(trozos.length);
 		for (String trozo: trozos) {
 			System.out.println(trozo);
@@ -31,7 +28,7 @@ public class Ejercicio03 {
 		}
 		System.out.println(numeroTrozosReales);
 		
-		System.out.println("El fichero se ha leido con éxito");
+		System.out.println("El fichero se ha leido con �xito");
 	}catch (IOException io) {
 		System.out.println("Ha ocurrido un error");
 	}
