@@ -40,6 +40,7 @@ public class Ejercicio16 {
 
 			} catch (ClassNotFoundException e) {
 			} catch (FileNotFoundException e) {
+				System.out.println("El fichero no existe");
 			} catch (IOException e) {
 			} finally {
 
@@ -49,6 +50,19 @@ public class Ejercicio16 {
 				}
 			}
 		}
+	}
+	
+	public static void insertarClientes() {
+		System.out.println("Introduce el nombre completo del cliente: ");
+		String nombre = s.nextLine();
+		System.out.println("Introduce el teléfono: ");
+		String tlfn = s.nextLine();
+		System.out.println("Introduce la dirección: ");
+		String direccion = s.nextLine();
+		System.out.println("Introduce el nif: ");
+		String nif = s.nextLine();
+		System.out.println("Indica con true o false si es moroso: ");
+		String moroso = s.nextLine();
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -63,10 +77,9 @@ public class Ejercicio16 {
 			System.out.println(tmp);
 		}
 
-		FileInputStream fis = null;
 		ObjectInputStream entrada = null;
 
-		fis = new FileInputStream("Ficheros/ventas.dat");
+		//fis = new FileInputStream("Ficheros/ventas.dat");
 		// entrada = new ObjectInputStream(fis);
 		FileOutputStream fos;
 		try {
@@ -83,12 +96,12 @@ public class Ejercicio16 {
 		int opcion = 0;
 		while (opcion != 6) {// true
 			do {
-				System.out.println("1. Cargar Clientes (del archivo en memoria)");
+				System.out.println("1. Insertar Clientes (en el arraylist)");
 				System.out.println("2. Consultar Clientes Morosos");
 				System.out.println("3. Consultar Cliente");
 				System.out.println("4. Modificar Clientes");
 				System.out.println("5. Borrar Clientes");
-				System.out.println("6. Guardar Clientes");
+				System.out.println("6. Guardar Clientes y salir");
 				System.out.println("\n\n\t\t Introduzca la opción");
 				opcion = s.nextInt();
 			} while (opcion < 1 || opcion > 6);
