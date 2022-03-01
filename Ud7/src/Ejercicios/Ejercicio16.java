@@ -25,9 +25,11 @@ import java.util.Scanner;
 public class Ejercicio16 {
 	static ArrayList<Cliente> clnt = new ArrayList<Cliente>();
 	static Scanner s = new Scanner(System.in);
+	static File fichero = new File("Ficheros/ventas.dat");
+	private static ObjectOutputStream salida;
 
 	public static void cargarClientes() {
-		File fichero = new File("Ficheros/ventas.dat");
+
 		if (fichero.exists()) {
 			ObjectInputStream entrada = null;
 			try {
@@ -51,7 +53,7 @@ public class Ejercicio16 {
 			}
 		}
 	}
-	
+
 	public static void insertarClientes() {
 		System.out.println("Introduce el nombre completo del cliente: ");
 		String nombre = s.nextLine();
@@ -63,32 +65,44 @@ public class Ejercicio16 {
 		String nif = s.nextLine();
 		System.out.println("Indica con true o false si es moroso: ");
 		String moroso = s.nextLine();
+		Boolean morosob = Boolean.parseBoolean(moroso);
+		clnt.add(new Cliente(nombre, tlfn, direccion, nif, morosob));
+	}
+
+	public static void guardarSalir() {
+		try {
+			salida = new ObjectOutputStream(new FileOutputStream(fichero));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (Cliente tmp : clnt) {
+			try {
+				salida.writeObject(tmp);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void consultarCliente() {
+		for (Cliente tmp : clnt) {
+			System.out.println(tmp);
+		}
+	}
+
+	public static void consultarMorosos() {
+		for (Cliente tmp : clnt) {
+			if (tmp.isMoroso()) {
+				System.out.println(tmp);
+			}
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		cargarClientes();
-		
-		Cliente antonio = new Cliente();
-		Cliente alex = new Cliente("Alejandro", "666666666", "Calle baja", "12345678", false);
-		clnt.add(alex);
-		clnt.add(antonio);
-
-		for (Cliente tmp : clnt) {
-			System.out.println(tmp);
-		}
-
-		ObjectInputStream entrada = null;
-
-		//fis = new FileInputStream("Ficheros/ventas.dat");
-		// entrada = new ObjectInputStream(fis);
-		FileOutputStream fos;
-		try {
-			fos = new FileOutputStream("Ficheros/ventas.dat");
-			ObjectOutputStream sos = new ObjectOutputStream(fos);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		// nada mas empezar cargar los clientes del archivo si este existe
 		// File ventas = new File("Ficheros/ventas.dat");
@@ -103,15 +117,25 @@ public class Ejercicio16 {
 				System.out.println("5. Borrar Clientes");
 				System.out.println("6. Guardar Clientes y salir");
 				System.out.println("\n\n\t\t Introduzca la opción");
-				opcion = s.nextInt();
+				String opcionS = s.nextLine();
+				opcion = Integer.parseInt(opcionS);
 			} while (opcion < 1 || opcion > 6);
 
 			switch (opcion) {
-			case 1: // metodo cargar y break
-			case 2: // metodo consultar y break
+			case 1:
+				insertarClientes();
+				break;
+			case 2:
+				consultarMorosos();
+				break;// metodo consultar y break
 			case 3:
+				consultarCliente();
+				break;
 			case 4:
 			case 5:
+			case 6:
+				guardarSalir();
+				break;
 			default: // guardar
 
 			}
