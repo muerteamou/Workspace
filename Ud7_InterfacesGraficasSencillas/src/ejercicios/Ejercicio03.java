@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-public class Ejercicio03 extends JFrame{
+@SuppressWarnings("serial")
+public class Ejercicio03 extends JFrame {
 	Container panel;
 	JButton sumar, restar;
 	JTextField num1, num2, resultado;
 	JLabel etiqueta1, etiqueta2;
-	
+
 	public Ejercicio03() {
 		super("Sumar y restar reales");
 		panel = getContentPane();
@@ -33,7 +33,7 @@ public class Ejercicio03 extends JFrame{
 		sumar.setBounds(40, 90, 45, 20);
 		panel.add(sumar);
 		restar = new JButton("-");
-		restar.setBounds(90, 90, 45,20);
+		restar.setBounds(90, 90, 45, 20);
 		panel.add(restar);
 		resultado = new JTextField(5);
 		resultado.setBounds(150, 90, 45, 20);
@@ -46,25 +46,33 @@ public class Ejercicio03 extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		Ejercicio03 ventana = new Ejercicio03();
 
 	}
-	
+
 	class OyenteBoton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource()== sumar) {
-				Double calculo = Double.parseDouble(num1.getText()) + Double.parseDouble(num2.getText());
-				resultado.setText(calculo.toString());
-			}else {
-				Double calculo = Double.parseDouble(num1.getText()) - Double.parseDouble(num2.getText());
-				resultado.setText(calculo.toString());
+			if (e.getSource() == sumar) {
+				try {
+					Double calculo = Double.parseDouble(num1.getText()) + Double.parseDouble(num2.getText());
+					resultado.setText(calculo.toString());
+				} catch (NumberFormatException nfe) {
+					JOptionPane.showMessageDialog(null, "Número no válido. Inténtelo otra vez");
+
+				}
+			} else {
+				try {
+					Double calculo = Double.parseDouble(num1.getText()) - Double.parseDouble(num2.getText());
+					resultado.setText(calculo.toString());
+				} catch (NumberFormatException nfe) {
+					JOptionPane.showMessageDialog(null, "Número no válido. Inténtelo otra vez");
+				}
 			}
-				
-			
+
 		}
 	}
-	
-	
-	
+
 }
