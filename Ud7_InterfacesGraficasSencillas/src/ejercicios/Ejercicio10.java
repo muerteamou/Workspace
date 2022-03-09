@@ -52,6 +52,7 @@ public class Ejercicio10 extends JFrame{
 		setSize(400,400);
 		
 		
+		
 	}
 	public static void main(String[] args) {
 		Ejercicio10 calculadora = new Ejercicio10();
