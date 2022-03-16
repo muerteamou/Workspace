@@ -137,12 +137,9 @@ public class Ejercicio16 {
 				guardarSalir();
 				break;
 			default: // guardar
-
 			}
 		}
-
 		s.close();
-
 	}
 
 }
