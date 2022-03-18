@@ -51,7 +51,7 @@ public class Ejercicio16 {
 			}
 		}
 	}
-	
+
 	public static void insertarClientes() {
 		System.out.println("Introduce el nombre completo del cliente: ");
 		String nombre = s.nextLine();
@@ -63,23 +63,29 @@ public class Ejercicio16 {
 		String nif = s.nextLine();
 		System.out.println("Indica con true o false si es moroso: ");
 		String moroso = s.nextLine();
+		Boolean morosob = Boolean.parseBoolean(moroso);
+		clnt.add(new Cliente(nombre, tlfn, direccion, nif, morosob));
+	}
+
+	public static void consultarClienteMoroso() {
+		for (Cliente tmp : clnt) {
+			if (tmp.isMoroso()) {
+				System.out.println(tmp);
+			}
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		cargarClientes();
-		
+
 		Cliente antonio = new Cliente();
 		Cliente alex = new Cliente("Alejandro", "666666666", "Calle baja", "12345678", false);
 		clnt.add(alex);
 		clnt.add(antonio);
 
-		for (Cliente tmp : clnt) {
-			System.out.println(tmp);
-		}
-
 		ObjectInputStream entrada = null;
 
-		//fis = new FileInputStream("Ficheros/ventas.dat");
+		// fis = new FileInputStream("Ficheros/ventas.dat");
 		// entrada = new ObjectInputStream(fis);
 		FileOutputStream fos;
 		try {
@@ -103,12 +109,17 @@ public class Ejercicio16 {
 				System.out.println("5. Borrar Clientes");
 				System.out.println("6. Guardar Clientes y salir");
 				System.out.println("\n\n\t\t Introduzca la opción");
-				opcion = s.nextInt();
+				String ent = s.nextLine();
+				opcion = Integer.parseInt(ent);
 			} while (opcion < 1 || opcion > 6);
 
 			switch (opcion) {
-			case 1: // metodo cargar y break
-			case 2: // metodo consultar y break
+			case 1:
+				insertarClientes();// metodo cargar y break
+				break; 
+			case 2:
+				consultarClienteMoroso();// metodo consultar y break
+				break;
 			case 3:
 			case 4:
 			case 5:
