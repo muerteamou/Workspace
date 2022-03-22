@@ -3,10 +3,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/*Escribe una clase con un método que reciba por parámetro el nombre de un
- *fichero de texto que contiene varias líneas con una cantidad real en cada
- *una de ellas (que habrás creado con anterioridad), y calcule su suma y media.
- *Incluye también el tratamiento de excepciones.*/
+/*Escribe una clase con un mï¿½todo que reciba por parï¿½metro el nombre de un
+ *fichero de texto que contiene varias lï¿½neas con una cantidad real en cada
+ *una de ellas (que habrï¿½s creado con anterioridad), y calcule su suma y media.
+ *Incluye tambiï¿½n el tratamiento de excepciones.*/
 
 public class Ejercicio01 {
 
@@ -33,7 +33,7 @@ public class Ejercicio01 {
 	}
 	
 	public static void main(String[] args) {
-		String nombreArchivo= "Ficheros/fichero5";
+		String nombreArchivo= "Ficheros/archivo01";
 		calculos(nombreArchivo);
 	}
 
