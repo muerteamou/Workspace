@@ -28,7 +28,7 @@ public class Ejercicio04 {
 	}
 
 	public static void main(String[] args) {
-		String archivo = "Ficheros/archivo03";
+		String archivo = "Ficheros/archivo04";
 		sinEspacios(archivo);
 
 	}
