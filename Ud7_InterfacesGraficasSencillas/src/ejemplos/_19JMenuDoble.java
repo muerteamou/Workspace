@@ -7,13 +7,13 @@ import java.awt.event.*;
 public class _19JMenuDoble extends JFrame implements ActionListener{
     private JMenuBar mb;
     private JMenu menu1,menu2,menu3;
-    private JMenuItem mi1,mi2,mi3,mi4;
+    private JMenuItem mi1,mi2,mi3,mi4,mi5;
     public _19JMenuDoble() {
     	setTitle("Menu Doble");
     	/*
-    	 * En el constructor de la clase llamamos al método heredado de la clase JFrame
-    	 * llamado setLayout y le pasamos como parámetro un valor null, con esto estamos
-    	 * informándole a la clase JFrame que utilizaremos posicionamiento absoluto para
+    	 * En el constructor de la clase llamamos al mï¿½todo heredado de la clase JFrame
+    	 * llamado setLayout y le pasamos como parï¿½metro un valor null, con esto estamos
+    	 * informï¿½ndole a la clase JFrame que utilizaremos posicionamiento absoluto para
     	 * los controles visuales dentros del JFrame.
     	 */
         setLayout(null);
@@ -21,7 +21,7 @@ public class _19JMenuDoble extends JFrame implements ActionListener{
         setJMenuBar(mb);
         menu1=new JMenu("Opciones");
         mb.add(menu1);
-        menu2=new JMenu("Tamaño de la ventana");
+        menu2=new JMenu("TamaÃ±o de la ventana");
         menu1.add(menu2);
         menu3=new JMenu("Color de fondo");
         menu1.add(menu3);
@@ -37,6 +37,9 @@ public class _19JMenuDoble extends JFrame implements ActionListener{
         mi4=new JMenuItem("Verde");
         menu3.add(mi4);
         mi4.addActionListener(this);
+        mi5= new JMenuItem("Azul");
+        menu3.add(mi5);
+        mi5.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -51,6 +54,9 @@ public class _19JMenuDoble extends JFrame implements ActionListener{
         }
         if (e.getSource()==mi4) {
             getContentPane().setBackground(new Color(0,255,0));
+        }
+        if (e.getSource()==mi5) {
+        	getContentPane().setBackground(new Color(0,0,255));
         }
     }
     

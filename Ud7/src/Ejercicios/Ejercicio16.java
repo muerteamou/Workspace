@@ -25,9 +25,11 @@ import java.util.Scanner;
 public class Ejercicio16 {
 	static ArrayList<Cliente> clnt = new ArrayList<Cliente>();
 	static Scanner s = new Scanner(System.in);
+	static File fichero = new File("Ficheros/ventas.dat");
+	private static ObjectOutputStream salida;
 
 	public static void cargarClientes() {
-		File fichero = new File("Ficheros/ventas.dat");
+
 		if (fichero.exists()) {
 			ObjectInputStream entrada = null;
 			try {
@@ -67,7 +69,33 @@ public class Ejercicio16 {
 		clnt.add(new Cliente(nombre, tlfn, direccion, nif, morosob));
 	}
 
-	public static void consultarClienteMoroso() {
+
+	public static void guardarSalir() {
+		try {
+			salida = new ObjectOutputStream(new FileOutputStream(fichero));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (Cliente tmp : clnt) {
+			try {
+				salida.writeObject(tmp);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void consultarCliente() {
+		for (Cliente tmp : clnt) {
+			System.out.println(tmp);
+		}
+	}
+	public static void consultarClienteMoroso(){}
+	
+	public static void consultarMorosos() {
 		for (Cliente tmp : clnt) {
 			if (tmp.isMoroso()) {
 				System.out.println(tmp);
@@ -96,6 +124,7 @@ public class Ejercicio16 {
 			e.printStackTrace();
 		}
 
+
 		// nada mas empezar cargar los clientes del archivo si este existe
 		// File ventas = new File("Ficheros/ventas.dat");
 
@@ -111,6 +140,10 @@ public class Ejercicio16 {
 				System.out.println("\n\n\t\t Introduzca la opción");
 				String ent = s.nextLine();
 				opcion = Integer.parseInt(ent);
+
+				String opcionS = s.nextLine();
+				opcion = Integer.parseInt(opcionS);
+				
 			} while (opcion < 1 || opcion > 6);
 
 			switch (opcion) {
@@ -118,18 +151,20 @@ public class Ejercicio16 {
 				insertarClientes();// metodo cargar y break
 				break; 
 			case 2:
-				consultarClienteMoroso();// metodo consultar y break
-				break;
+				consultarMorosos();
+				break;// metodo consultar y break
 			case 3:
+				consultarCliente();
+				break;
 			case 4:
 			case 5:
+			case 6:
+				guardarSalir();
+				break;
 			default: // guardar
-
 			}
 		}
-
 		s.close();
-
 	}
 
 }
