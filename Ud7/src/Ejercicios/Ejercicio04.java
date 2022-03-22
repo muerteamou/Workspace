@@ -2,9 +2,9 @@ package Ejercicios;
 import java.io.FileReader;
 import java.io.IOException;
 
-/*Escribe una clase con un método que reciba por parámetro el nombre de un 
- * fichero de texto (que habrás creado con anterioridad) y lo muestre por 
- * pantalla sin espacios en blanco. Incluye también el tratamiento de excepciones.*/
+/*Escribe una clase con un mï¿½todo que reciba por parï¿½metro el nombre de un 
+ * fichero de texto (que habrï¿½s creado con anterioridad) y lo muestre por 
+ * pantalla sin espacios en blanco. Incluye tambiï¿½n el tratamiento de excepciones.*/
 
 public class Ejercicio04 {
 	
@@ -26,7 +26,7 @@ public class Ejercicio04 {
 		} 
 	
 	public static void main(String[] args) {
-		String fl = "Ficheros/fichero3";
+		String fl = "Ficheros/fichero2.txt";
 		leerSinEspacios(fl);
 
 	}
