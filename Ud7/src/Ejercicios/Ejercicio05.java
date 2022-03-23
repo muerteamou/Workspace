@@ -16,8 +16,6 @@ public class Ejercicio05 {
 		String ruta = "Ficheros/ficheroinverso";
 		invertir(cadena, ruta);
 		s.close();
-
-
 	}
 	
 	public static void invertir(String texto, String nfichero) throws IOException {
