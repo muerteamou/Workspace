@@ -15,30 +15,27 @@ public class Ejercicio06 {
 
 	public static void todoMay(String arch1, String arch2) {
 		String linea;
-		BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader(arch1));
-		
-		BufferedWriter bw = new BufferedWriter(new FileWriter(arch2));
+			BufferedReader br = new BufferedReader(new FileReader(arch1));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(arch2));
 
-		while ((linea = br.readLine()) != null) {
-			bw.write(linea.toUpperCase());
-			bw.newLine();
-		}
-		System.out.println("La conversión se ha realizado con éxito.");
-		bw.close();
-		System.out.println("El archivo se ha guardado con éxito");
-		br.close();
-		
-		
+			while ((linea = br.readLine()) != null) {
+				bw.write(linea.toUpperCase());
+				bw.newLine();
+			}
+			System.out.println("La conversión se ha realizado con éxito.");
+			bw.close();
+			System.out.println("El archivo se ha guardado con éxito");
+			br.close();
+
 		} catch (IOException ioe) {
 			System.out.println("Ha habido un error de entrada/salida");
 		}
 	}
 
 	public static void main(String[] args) {
-		String arch1="Ficheros/archivo06a";
-		String arch2 ="Ficheros/archivo06b";
+		String arch1 = "Ficheros/archivo06a";
+		String arch2 = "Ficheros/archivo06b";
 		todoMay(arch1, arch2);
 	}
 

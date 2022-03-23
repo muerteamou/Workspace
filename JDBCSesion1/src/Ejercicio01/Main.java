@@ -6,13 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-/*1. (script baloncesto.sql). Realiza las siguientes clases:
-a. Clase ListaSociosBaloncesto.java, con un método main, que visualice los datos de todos los socios. Incluir
-también el número de socios. Ejemplo de ejecución:*/
-
-public class ListaSociosBaloncesto {
-
+public class Main {
+	
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
 	private static String hostname = "localhost";
@@ -26,25 +21,27 @@ public class ListaSociosBaloncesto {
 		Connection conn = DriverManager.getConnection(url, username, password);
 		Statement consulta = conn.createStatement();
 		ResultSet rs = consulta.executeQuery ("SELECT * FROM socio");
-
+		
 		System.out.println("Lista de socios\n----------------------------------------------------------");
 		int contador =0;
+		Socio socio = new Socio();
 		while(rs.next()) {
 			contador++;
-			int id = rs.getInt("socioID");
-			String nombre =rs.getString("nombre");
-			int estatura = rs.getInt("estatura");
-			int edad = rs.getInt("edad");
-			String localidad = rs.getString("localidad");
 			
-			System.out.println("Socio nº " + id + ". Nombre: " + nombre + " edad: " + edad + " estatura: " +estatura + " localidad: " + localidad);
+			socio.setSocioID(rs.getInt("socioID"));
+			socio.setNombre(rs.getString("nombre"));
+			socio.setEstatura(rs.getInt("estatura"));
+			socio.setEdad(rs.getInt("edad"));
+			socio.setLocalidad(rs.getString("localidad"));
+			
+			System.out.println("Socio nº " + socio.getSocioID() + ". Nombre: " + socio.getNombre() + " edad: " + socio.getEdad() + " estatura: " + 
+			socio.getEstatura() + " localidad: " + socio.getLocalidad());
 		}
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("Nº total de socios: " + contador);
 		conn.close();
 		consulta.close();
-		rs.close();
-		
+		rs.close();		
 	}
 
 }

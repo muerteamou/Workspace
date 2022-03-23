@@ -16,6 +16,7 @@ public class Ejercicio01 {
 		int contador = 0;
 		double suma = 0;
 		try {
+			//BufferedReader se usa para leer lineas
 			BufferedReader filtro = new BufferedReader(new FileReader(fichero));
 			while ((linea = filtro.readLine()) != null) {
 				contador++;

@@ -12,6 +12,7 @@ public class Ejercicio02 {
 	public static void leerVocales(String ruta) {
 		int contador = 0;
 		try {
+			//FileReader se usa para leer caracteres
 			FileReader fr = new FileReader(ruta);
 			int caracterleido;
 			String cadena= "";

@@ -4,103 +4,120 @@
  * 29 febrero 2020
  */
 package paquete1_mejorado;
+
 import java.sql.*;
 import java.util.ArrayList;
+
 public class AccesoBdatos {
-private static String driver = "com.mysql.cj.jdbc.Driver";
-private static String database = "sample";
-private static String hostname = "localhost";
-private static String port = "3308";
-private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?serverTimezone=Europe/Madrid";
-private static String username = "root";
-private static String password = "root";
+	private static String driver = "com.mysql.cj.jdbc.Driver";
+	private static String database = "sample";
+	private static String hostname = "localhost";
+	private static String port = "3308";
+	private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database
+			+ "?serverTimezone=Europe/Madrid";
+	private static String username = "root";
+	private static String password = "root";
 
 // NUNCA CONECTARSE CON USUARIO ROOT!!!!!!!!!!!!!!!!!!!
 // SOLO PARA PRUEBAS!!!!!!!
 
-public Connection conecta;
+	public Connection conecta;
 
 	public void conectar() throws SQLException, ClassNotFoundException {
 		Class.forName(driver);
 		conecta = DriverManager.getConnection(url, username, password);
 	}
-	
-	
-	
-	public ArrayList <Libro> consultarTodos(){
-		ArrayList <Libro>lista = new ArrayList<Libro> ();
-	
+
+	public ArrayList<Libro> consultarTodos() {
+		ArrayList<Libro> lista = new ArrayList<Libro>();
+
 		try {
+			// crear la sentencia
 			Statement consulta = conecta.createStatement();
-			ResultSet reg = consulta.executeQuery ("SELECT * FROM Libros");
-			while (reg.next ()) {
-				Libro libro= new Libro(reg.getInt (1), reg.getString (2), reg.getInt (3));
+			// ejecutamos la sentencia y guardamos el resultado en resulset
+			ResultSet reg = consulta.executeQuery("SELECT * FROM Libros");
+			// ejecutamos .next para ir iterando en cada fila.
+			while (reg.next()) {
+				// si hay siguiente, lo lees y lo añades
+				Libro libro = new Libro(reg.getInt(1), reg.getString(2), reg.getInt(3));
 				lista.add(libro);
-		}
-		consulta.close ();
+			}
+			consulta.close();
 		} catch (SQLException e) {
+			// si hay algún error devuelvo nulo
 			return null;
-		} 
-		return lista;
 		}
-	
-	public Libro consultarId(int numero){
+		return lista;
+	}
+
+	public Libro consultarId(int numero) {
 		try {
 			Statement consulta = conecta.createStatement();
-			ResultSet reg = consulta.executeQuery ("SELECT * FROM Libros WHERE idLibro =" + numero);
-			//NOOOOOOOOOOOOOOOOOOOOOOOOOO HACER ESTO NUNCA
+			ResultSet reg = consulta.executeQuery("SELECT * FROM Libros WHERE idLibro =" + numero);
+			// NOOOOOOOOOOOOOOOOOOOOOOOOOO HACER ESTO NUNCA
 			// SOLO EN ESTE MOMENTO
 			// UTILIZAREMOS SENTENCIAS PREPARADAS!!!!!!!!!!!!!!!!!
 			Libro libro = new Libro();
-			if (reg.next ())	{
-				
-				libro.setIdLibro(reg.getInt (1));
+			// en este caso puede devolver un resultado o nada, por eso no se hace while
+			if (reg.next()) {
+
+				libro.setIdLibro(reg.getInt(1));
 				libro.setTitulo(reg.getString(2));
 				libro.setPrecio(reg.getInt(3));
-		    }
-			else
-				libro=null;
-		consulta.close ();
-		return libro; 
+			} else
+				libro = null;
+			consulta.close();
+			return libro;
+		} catch (SQLException e) {
+			System.out.println("error en la consulta" + e.getMessage());
+			return null;
 		}
-		catch (SQLException e) {
-			System.out.println("error en la consulta"+e.getMessage());
-		return null;
-		}
-		} //de consultarId
-	
+	} // de consultarId
+
 	//
-	
-	public ArrayList <Libro> consultarPorTitulo(String titulo){
-		ArrayList <Libro>lista = new ArrayList<Libro> ();
+
+	public ArrayList<Libro> consultarPorTitulo(String titulo) {
+		ArrayList<Libro> lista = new ArrayList<Libro>();
 		try {
 			Statement consulta = conecta.createStatement();
-			ResultSet reg = consulta.executeQuery ("SELECT * FROM Libros WHERE titulo LIKE '%" + titulo + "%'");
-			//NOOOOOOOOOOOOOOOOOOOOOOOOOO HACER ESTO NUNCA
+			// las cadenas tienen que ir entre comillas
+			ResultSet reg = consulta.executeQuery("SELECT * FROM Libros WHERE titulo LIKE '%" + titulo + "%'");
+			// NOOOOOOOOOOOOOOOOOOOOOOOOOO HACER ESTO NUNCA
 			// SOLO EN ESTE MOMENTO
 			// UTILIZAREMOS SENTENCIAS PREPARADAS!!!!!!!!!!!!!!!!!
-			
-			while (reg.next ()) {
-				Libro libro= new Libro(reg.getInt (1), reg.getString (2), reg.getInt (3));
+
+			while (reg.next()) {
+				Libro libro = new Libro(reg.getInt(1), reg.getString(2), reg.getInt(3));
 				lista.add(libro);
+			}
+			consulta.close();
+			return lista;
+		} catch (SQLException e) {
+			System.out.println("error en la consulta" + e.getMessage());
+			return null;
 		}
-		consulta.close ();
-		return lista;
-		}
-		catch (SQLException e) {
-			System.out.println("error en la consulta"+e.getMessage());
-		return null;
-		}
-		} //de consultarporTitulo
-        //
+	} // de consultarporTitulo
 		//
-	public ResultSet consultarTodosResultSet() throws SQLException{
+		//
+
+	public ResultSet consultarTodosResultSet() throws SQLException {
 		Statement consulta = conecta.createStatement();
-		return consulta.executeQuery ("SELECT * FROM Libros");
+		return consulta.executeQuery("SELECT * FROM Libros");
 	}
-	//
+
+	public void consultarTodosResultSet2() throws SQLException {
+		Statement consulta = conecta.createStatement();
+		imprimirDatosResulSet(consulta.executeQuery("SELECT * FROM Libros"));
+	}
+
+	private void imprimirDatosResulSet(ResultSet reg) throws SQLException {
+		while (reg.next()) {
+			System.out.println(reg.getInt(1) + " - " + reg.getString(2) + " - " + reg.getInt(3));
+		}
+	}
+
 	public void desconectar() throws SQLException {
-		if (conecta !=null) {
+		if (conecta != null) {
 			conecta.close();
 		}
 	}
