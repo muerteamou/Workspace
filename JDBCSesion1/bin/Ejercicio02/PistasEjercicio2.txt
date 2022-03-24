@@ -1,0 +1,38 @@
+** MÉTODO DENTRO DE CLASE AccesoBdatos:
+public String consultarUno(String username, String password){
+	try {
+		Statement consulta = conecta.createStatement();
+		String consultaSQL = "SELECT * FROM Usuario WHERE username = '" + username + "' AND password='" + password + "'";
+			//System.out.println(consultaSQL);
+		ResultSet reg = consulta.executeQuery (consultaSQL);
+			//NOOOOOOOOOOOOOOOOOOOOOOOOOO HACER ESTO NUNCA
+			// SOLO EN ESTE MOMENTO
+			// UTILIZAREMOS SENTENCIAS PREPARADAS!!!!!!!!!!!!!!!!!
+				
+		if (reg.next ()) {
+			return	reg.getString(3);
+		}
+		else {
+			return null;
+		}
+		
+.....
+.....
+
+*** DENTRO DEL public void actionPerformed(ActionEvent arg0)
+
+-- Método replaceAll("\\s","") APLICADO A CADENAS, EN CONCRETO A LOS DOS RECUADROS DE TEXTO, PARA ELIMINAR CUALQUIER TIPO DE BLANCO (ESPACIOS, TABULADORES, RETORNOS DE CARRO)
+
+
+-- ASEGURARSE QUE LOS DOS RECUADROS DE TEXTO ESTÁN RELLENOS (= NO ESTÁN VACÍOS)
+
+AccesoBdatos abd=new AccesoBdatos();
+...
+abd.conectar();
+...
+
+String nombre = abd.consultarUno(usuario, contraseña);
+....
+ANALIZAR RESULTADO
+......
+

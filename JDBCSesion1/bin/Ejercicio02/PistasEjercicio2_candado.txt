@@ -1,0 +1,23 @@
+IMAGEN CANDADO
+==========================================================
+if (nombre!=null) {
+	Image img= new ImageIcon("Imagenes\\candado_abierto.png").getImage();
+	ImageIcon img2=new ImageIcon(img.getScaledInstance(56, 76, Image.SCALE_SMOOTH));
+	lblSaludo.setText("Bienvenido/a "+ nombre);
+	lblImagen.setIcon(img2);
+}
+else {
+	Image img= new ImageIcon("Imagenes\\candado_cerrado.png").getImage();
+	ImageIcon img2=new ImageIcon(img.getScaledInstance(56, 76, Image.SCALE_SMOOTH));
+	lblSaludo.setText("No existe el Usuario / Contraseña");
+	lblImagen.setIcon(img2);
+}
+===========================================================================
+MOVIMIENTOS DENTRO DEL  ResultSet rs......
+
+rs.next()
+
+rs.first()
+rs.last()
+rs.absolute(posicion)
+rs.getRow()
