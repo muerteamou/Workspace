@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.DuplicateFormatFlagsException;
 
 /*Escribe una clase con un método que reciba como argumento el nombre de un fichero (ya
 existente) y cree una copia del mismo en otro fichero. El nombre de este último fichero
