@@ -37,6 +37,7 @@ public class Main {
 		System.out.println("Introduce un año: ");
 		Scanner s = new Scanner(System.in);
 		int anyo = s.nextInt();
+		s.close();
 		System.out.println("Hay " + listaPapel.publicacionesAnterioresA(anyo) + " publicaciones anteriores a " + anyo);
 	}
 	
