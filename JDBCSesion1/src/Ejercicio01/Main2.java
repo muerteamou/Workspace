@@ -13,9 +13,10 @@ public class Main2 {
 		String consulta = s.nextLine();
 		s.close();
 		abd.consultarPorLocalidad(consulta);
-		abd.desconectar();
+		
 		
 		abd.imprimirDatos(abd.consultaTodos());
+		abd.desconectar();
 
 	}
 
