@@ -18,44 +18,60 @@ import java.io.IOException;
 
 public class Ejercicio07 {
 
-	public static void main(String[] args) {
-		DataInputStream dataIS = null;
-
+	public static void registrarTemp() {
+		DataOutputStream dataOS = null;
 		try {
 			FileOutputStream fileout;
-			fileout = new FileOutputStream("Ficheros/fichero07");
-			dataIS = new DataInputStream(new FileInputStream("Ficheros/fichero07"));
+			fileout = new FileOutputStream("Ficheros/temperaturas");
 
-			DataOutputStream dataOS = new DataOutputStream(fileout);
-
+			dataOS = new DataOutputStream(fileout);
 			dataOS.writeUTF("10 Agosto 2021");
 
 			for (int i = 0; i <= 23; i++) {
+
 				dataOS.writeInt(i);
 				dataOS.writeDouble(Math.random() * 30);
 			}
 			dataOS.close();
-			int hora;
-			double temp;
+
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error de entrada");
+		}
+	}
+
+	public static void leerTemp() {
+		DataInputStream dataIS = null;
+		try {
+			FileInputStream filein;
+			filein = new FileInputStream("Ficheros/temperaturas");
+			dataIS = new DataInputStream(filein);
+
 			System.out.println(dataIS.readUTF());
 			while (true) {
-				hora = dataIS.readInt();
-				temp = dataIS.readDouble();
-				System.out.println("Hora: " + hora + " - Temperatura: " + temp);
+				System.out.println("Hora - " + dataIS.readInt() + " - Temperatura: " + dataIS.readDouble());
 			}
-
-		} catch (FileNotFoundException fnf) {
-			System.out.println("Fichero no encontrado");
-		} catch (EOFException eof) {
-			System.out.println("Final de fichero");
-		} catch (IOException ioe) {
-			System.out.println("Ocurrió un error de entrada/salida");
+		} catch (EOFException e) {
+			System.out.println("Final del archivo");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 		try {
 			dataIS.close();
-		} catch (IOException ioe) {
-
+		} catch (Exception e) {
+			System.out.println("Final del archivo");
 		}
+
+	}
+
+	public static void main(String[] args) {
+		registrarTemp();
+		leerTemp();
 	}
 }

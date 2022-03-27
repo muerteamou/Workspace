@@ -12,24 +12,24 @@ excepciones.*/
 public class Ejercicio01 {
 
 	public static void calcularLinea(String fichero) {
-		String linea;
 		int contador = 0;
 		double suma = 0;
+		String linea = "";
+		BufferedReader bf;
 		try {
-			//BufferedReader se usa para leer lineas
-			BufferedReader filtro = new BufferedReader(new FileReader(fichero));
-			while ((linea = filtro.readLine()) != null) {
-				contador++;
-				suma = suma + Double.parseDouble(linea);
-				System.out.println(linea);
-			}
-			filtro.close();
-			System.out.println("La suma vale: " + suma);
-			System.out.println("La media vale: " + suma / contador);
-		} catch (IOException ioe) {
-			System.out.println("Archivo no encontrado");
+			bf = new BufferedReader(new FileReader(fichero));
+		
+		while ((linea = bf.readLine()) != null) {
+			contador++;
+			suma = suma + Double.parseDouble(linea);
+			System.out.println(linea);
 		}
-
+		bf.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("La suma de los numeros es: " + suma);
+		System.out.println("La media de los numeros es: " + suma/contador);
 	}
 
 	public static void main(String[] args) {

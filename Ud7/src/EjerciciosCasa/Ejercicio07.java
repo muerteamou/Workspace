@@ -16,7 +16,7 @@ Incluye también el tratamiento de excepciones.*/
 public class Ejercicio07 {
 
 	public static void main(String[] args) {
-		//es importante montar DataInputStream así 
+		// es importante montar DataInputStream así
 		DataInputStream dataIS = null;
 
 		try {
@@ -25,23 +25,23 @@ public class Ejercicio07 {
 			dataIS = new DataInputStream(new FileInputStream("Ficheros/archivo07"));
 
 			DataOutputStream dataOS = new DataOutputStream(fileout);
-		
-		dataOS.writeUTF("10 Agosto 2021");
-		
-		for(int i=0; i<= 23; i++) {
-			dataOS.writeInt(i);
-			dataOS.writeDouble(Math.random()*30);
-			
-		}
-		dataOS.close();
-		
-		System.out.println(dataIS.readUTF());
-		while(true) {
-			System.out.println("Hora: " + dataIS.readInt() + " Temperatura: " + dataIS.readDouble());
-		}
+
+			dataOS.writeUTF("10 Agosto 2021");
+
+			for (int i = 0; i <= 23; i++) {
+				dataOS.writeInt(i);
+				dataOS.writeDouble(Math.random() * 30);
+
+			}
+			dataOS.close();
+
+			System.out.println(dataIS.readUTF());
+			while (true) {
+				System.out.println("Hora: " + dataIS.readInt() + " Temperatura: " + dataIS.readDouble());
+			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Archivo no encontrado");
-		}catch (EOFException e) {
+		} catch (EOFException e) {
 			System.out.println("Final del archivo");
 		} catch (IOException e) {
 			System.out.println("Error de entrada/salida");
@@ -49,7 +49,7 @@ public class Ejercicio07 {
 		try {
 			dataIS.close();
 		} catch (IOException e) {
-			
+
 		}
 	}
 

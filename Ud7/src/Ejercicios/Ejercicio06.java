@@ -2,6 +2,7 @@ package Ejercicios;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,33 +16,38 @@ import java.io.IOException;
 public class Ejercicio06 {
 
 	public static void main(String[] args) {
-		
+
 		ponerMay("Ficheros/fichero06", "Ficheros/fichero06tmp");
 
 	}
 
 	public static void ponerMay(String fichero1, String fichero2) {
+		String linea;
+
 		BufferedReader bf;
 		try {
 			bf = new BufferedReader(new FileReader(fichero1));
 		
-		BufferedWriter bw = new BufferedWriter(new FileWriter(fichero2));
-		String linea;
-		while((linea= bf.readLine())!=null) {
-			bw.write(linea.toUpperCase());
+		BufferedWriter bw;
+		
+			bw = new BufferedWriter(new FileWriter(fichero2));
+		
+
+		while ((linea = bf.readLine()) != null) {
+			linea = linea.toUpperCase();
+			bw.write(linea);
 			bw.newLine();
 		}
-		
-		
-		//bw.write(bf.readLine().toUpperCase());
-		
-		bw.close();
 		bf.close();
-		
-		} catch (IOException io) {
+		bw.close();
+		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
-			io.printStackTrace();
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
 		}
 	}
-	
+
 }

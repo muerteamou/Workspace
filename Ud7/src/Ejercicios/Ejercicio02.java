@@ -1,37 +1,39 @@
 package Ejercicios;
+
 import java.io.FileReader;
 import java.io.IOException;
 
-/*Escribe una clase con un método que reciba por parámetro el nombre de un 
- * fichero de texto (que habrás creado con anterioridad) y cuente las vocales 
- * (tanto mayúsculas como minúsculas) que en él aparecen. Incluye también el 
+/*Escribe una clase con un mï¿½todo que reciba por parï¿½metro el nombre de un 
+ * fichero de texto (que habrï¿½s creado con anterioridad) y cuente las vocales 
+ * (tanto mayï¿½sculas como minï¿½sculas) que en ï¿½l aparecen. Incluye tambiï¿½n el 
  * tratamiento de excepciones.
 */
 public class Ejercicio02 {
 
 	private static void leer(String f) {
-		int contador = 0;
+		int caracterleido, contador = 0;
+		String texto="";
+		FileReader fr;
 		try {
-			FileReader fr = new FileReader(f);
-			int caracterLeido;
+			fr = new FileReader(f);
 
-			while ((caracterLeido = fr.read()) != -1) {
-				char c = (char) caracterLeido;
-				if ((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u')) {
+			while ((caracterleido = fr.read()) != -1) {
+				char c = (char) caracterleido;
+				texto = texto + c;
+				if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
 					contador++;
 				}
 			}
-			fr.close();
-			System.out.println("El fichero se ha leido correctamente.");
-			System.out.println("Hay " + contador + " vocales");
-
-		} catch (IOException io) {
-			System.out.println("Ocurrió un error en la entrada de datos");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		System.out.println(texto);
+		System.out.println("En total hay " + contador + " vocales");
 	}
 
 	public static void main(String[] args) {
-		String f = "Ficheros/fichero3";
+		String f = "Ficheros/archivo02";
 		leer(f);
 
 	}

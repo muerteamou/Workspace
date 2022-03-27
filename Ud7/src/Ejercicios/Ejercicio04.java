@@ -9,24 +9,28 @@ import java.io.IOException;
 public class Ejercicio04 {
 	
 	private static void leerSinEspacios(String f) {
-		int caracterLeido;
+		int caracterleido;
+		String cadena="";
+		FileReader fr;
 		try {
-		FileReader fr = new FileReader(f);
-		caracterLeido = fr.read();
-		while (caracterLeido != -1) {
-			if ((char) caracterLeido != ' ') {
-				System.out.print((char)caracterLeido);
-			}caracterLeido = fr.read();
+			fr = new FileReader(f);
+		
+		
+		while((caracterleido= fr.read())!=-1) {
+			if(caracterleido!=' ') {
+				cadena = cadena +(char) caracterleido;
+			}
 			
-			}fr.close();
-			
-	}catch (IOException io) {
-		System.out.println("Ha ocurrido un error");
-	}
+		}fr.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(cadena);
 		} 
 	
 	public static void main(String[] args) {
-		String fl = "Ficheros/fichero2.txt";
+		String fl = "Ficheros/archivo04";
 		leerSinEspacios(fl);
 
 	}

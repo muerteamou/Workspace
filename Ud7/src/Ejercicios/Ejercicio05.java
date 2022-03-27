@@ -17,22 +17,20 @@ public class Ejercicio05 {
 		invertir(cadena, ruta);
 		s.close();
 	}
-	
-	public static void invertir(String texto, String nfichero) throws IOException {
-		
-		FileWriter fw = new FileWriter(nfichero);
-		/*
-		char [] temp = texto.toCharArray();
-		
-		for (int i=texto.length()-1; i>=0; i--) {
-			fw.write(temp[i]);
+
+	public static void invertir(String texto, String nfichero) {
+
+		FileWriter fw;
+		try {
+			fw = new FileWriter(nfichero);
+			for (int i = texto.length() - 1; i >= 0; i--) {
+				fw.write(texto.charAt(i));
+			}fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		*/
-		for (int i = texto.length()-1; i>=0; i--) {
-			fw.write(texto.charAt(i));
-		}
-		fw.close();
-		
+
 	}
 
 }
