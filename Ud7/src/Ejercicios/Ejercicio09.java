@@ -2,37 +2,39 @@ package Ejercicios;
 import java.io.FileReader;
 import java.io.IOException;
 
-/*Escribe una clase con un método que a partir de dos ficheros que
- *  reciba como argumento indique si son idénticos.
+/*Escribe una clase con un mÃ©todo que a partir de dos ficheros que
+ *  reciba como argumento indique si son idÃ©nticos.
  */
 public class Ejercicio09 {
 
 	private static void comprobarArchivos(String archivo1, String archivo2) {
-
-		int caracterLeido1;
-		int caracterLeido2;
-		String cadena1 = "";
-		String cadena2 = "";
-		try {
-			FileReader fr1 = new FileReader(archivo1);
+			String cadena1="", cadena2="";
+			
+			int crt1=0, crt2=0;
+		
+			FileReader fr1;
+			try {
+				fr1 = new FileReader(archivo1);
+			
 			FileReader fr2 = new FileReader(archivo2);
-
-			while ((caracterLeido1 = fr1.read()) != -1) {
-				cadena1 = cadena1 + (char)caracterLeido1;
+			
+			while((crt1=fr1.read())!=-1) {
+				cadena1=cadena1 + (char)crt1;
 			}
-			while ((caracterLeido2 = fr2.read())!= -1) {
-				cadena2 = cadena2 + (char)caracterLeido2;
-			}
-			if (cadena1.equals(cadena2)) {
-				System.out.println("Los archivos son iguales");
-			}else {
-				System.out.println("Los archivos son distintos");
-			}
-			fr1.close();
+			while((crt2=fr2.read())!=-1) {
+				cadena2=cadena2 + (char)crt2;
+			}fr1.close();
 			fr2.close();
-		} catch (IOException io) {
-			System.out.println("Ha ocurrido un error");
-		}
+			if (cadena1.equals(cadena2)) {
+				System.out.println("Los archivos son identicos.");
+			}else {
+				System.out.println("Los archivos son diferentes");
+			}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
 	}
 
 	public static void main(String[] args) {

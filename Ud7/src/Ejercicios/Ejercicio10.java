@@ -1,5 +1,6 @@
 package Ejercicios;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,24 +16,27 @@ public class Ejercicio10 {
 	
 	//lo hago con filereader
 	
+	
+	
 	//probar a hacerlo con file estream
 	private static void copiarFichero(String f) {
-		String carpeta= "Ficheros/";
-		int caracterLeido;
+		int crt =0;
+		FileReader fr;
 		try {
-		FileReader fr = new FileReader(carpeta + f);
-		String fn = carpeta + "copia_de_" + f;
-		FileWriter fw = new FileWriter(fn);
-		while ((caracterLeido = fr.read()) != -1) {
-			char c = (char) caracterLeido;
-			fw.write(c);
-		}
-		fr.close();
+			fr = new FileReader("Ficheros/" + f);
+		
+		FileWriter fw = new FileWriter ("Ficheros/copia_de_" + f);
+		while((crt=fr.read())!=-1) {
+			fw.write(crt);
+		}fr.close();
 		fw.close();
-		System.out.println("El fichero se ha copiado con �xito");
-		}catch(IOException io) {
-			System.out.println("Ocurri� un error en la copia");
-		}		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {	

@@ -75,10 +75,8 @@ public class Ejercicio16bis {
 		for (Cliente cliente : lista) {
 			salida.writeObject(cliente);
 		}} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la aplicacion");

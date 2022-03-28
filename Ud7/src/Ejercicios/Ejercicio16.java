@@ -45,7 +45,6 @@ public class Ejercicio16 {
 				System.out.println("El fichero no existe");
 			} catch (IOException e) {
 			} finally {
-
 				try {
 					entrada.close();
 				} catch (IOException e) {
