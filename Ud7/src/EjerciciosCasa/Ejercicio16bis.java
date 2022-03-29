@@ -1,9 +1,11 @@
 package EjerciciosCasa;
 
-
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,8 +15,33 @@ public class Ejercicio16bis {
 	static Scanner s = new Scanner(System.in);
 
 	public static void cargarClientes() {
-		
+		File archivo = new File("Ficheros/ventas.dat");
+		if (archivo.exists()) {
+			ObjectInputStream entrada = null;
+			try {
 
+				entrada = new ObjectInputStream(new FileInputStream(archivo));
+				Cliente c;
+				while (true) {
+					c = (Cliente) entrada.readObject();
+					lista.add(c);
+				}
+
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+			}finally {
+				try {
+					entrada.close();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+			}
+
+		}
 	}
 
 	public static void anyadirCliente() {
