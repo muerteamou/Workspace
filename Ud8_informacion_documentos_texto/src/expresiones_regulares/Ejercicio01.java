@@ -1,8 +1,5 @@
 package expresiones_regulares;
 
-import java.lang.reflect.Array;
-import java.util.Scanner;
-
 /*1. Utilizando expresiones regulares, realiza los siguientes métodos para validar strings que se leerán por teclado:
 a) Validar un número de teléfono nacional sin espacios (9 cifras numéricas); ej--> 974243447
 b) Validar un número de teléfono internacional (Comienza por paréntesis, le sigue el carácter +, después 2 ó

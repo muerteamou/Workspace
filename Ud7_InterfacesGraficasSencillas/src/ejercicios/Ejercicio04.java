@@ -1,6 +1,9 @@
 package ejercicios;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class Ejercicio04 extends JFrame {
+public class Ejercicio04 extends JFrame implements ActionListener{
 	
 	Container panel;
 	JButton validar;
@@ -34,14 +37,28 @@ public class Ejercicio04 extends JFrame {
 		validar = new JButton("Validar");
 		validar.setBounds(90, 90, 100, 20);
 		panel.add(validar);
-		//validar.addActionListener(new OyenteBoton());
+		validar.addActionListener(this);
 		setSize(300, 200);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 }
+	
 		public static void main(String[] args) {
 			Ejercicio04 ventana = new Ejercicio04();
 	}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String usuario = "Alex";
+			String contrasenya ="Alex";
+			if(user.getText().equalsIgnoreCase(usuario) && pass.getText().equalsIgnoreCase(contrasenya)) {
+				setTitle("Validación correcta");
+			}else {
+				setTitle("Validación incorrecta");
+			}
+			
+			
+		}
 
 }

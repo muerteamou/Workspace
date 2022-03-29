@@ -1,11 +1,9 @@
 package EjerciciosCasa;
 
-import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,28 +13,7 @@ public class Ejercicio16bis {
 	static Scanner s = new Scanner(System.in);
 
 	public static void cargarClientes() {
-		File archivo = new File("Ficheros/ventas.dat");
-		if (archivo.exists()) {
-			ObjectInputStream entrada = null;
-			Cliente cnt;
-			try {
-				entrada = new ObjectInputStream(new FileInputStream(archivo));
-
-				while (true) {
-					cnt = (Cliente) entrada.readObject();
-					lista.add(cnt);
-				}
-			} catch (ClassNotFoundException e) {
-			} catch (IOException e) {
-			} finally {
-				try {
-					if (entrada != null) {
-						entrada.close();
-					}
-				} catch (IOException e) {
-				}
-			}
-		}
+		
 
 	}
 
@@ -54,33 +31,36 @@ public class Ejercicio16bis {
 		c.setMoroso(Boolean.parseBoolean(s.nextLine()));
 		lista.add(c);
 	}
-	
+
 	public static void consultarClientes() {
 		for (Cliente c : lista) {
 			System.out.println(c);
 		}
 	}
+
 	public static void clienteMoroso() {
-		for(Cliente c : lista) {
-			if(c.getMoroso()) {
+		for (Cliente c : lista) {
+			if (c.getMoroso()) {
 				System.out.println(c);
 			}
 		}
 	}
+
 	public static void guardarSalir() {
 		ObjectOutputStream salida;
 		try {
 			salida = new ObjectOutputStream(new FileOutputStream("Ficheros/ventas.dat"));
-		
-		for (Cliente cliente : lista) {
-			salida.writeObject(cliente);
-		}} catch (FileNotFoundException e) {
+
+			for (Cliente cliente : lista) {
+				salida.writeObject(cliente);
+			}
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la aplicacion");
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -106,7 +86,7 @@ public class Ejercicio16bis {
 				anyadirCliente();
 				break; // m�todo a�adir y break
 			case 2:
-				 consultarClientes();
+				consultarClientes();
 				break; // m�todo consultar y break
 			case 3:
 				clienteMoroso();
@@ -116,7 +96,7 @@ public class Ejercicio16bis {
 				break;// ... y break
 			case 5:
 				// borrarCliente();
-				break;// ... y break
+				// break;// ... y break
 			default:
 				guardarSalir();
 				break;// ...Guardar
