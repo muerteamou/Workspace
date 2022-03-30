@@ -65,6 +65,7 @@ public class Ejercicio_02cbis {
 			xstream.alias("Departamento", Departamento.class);
 			xstream.addImplicitCollection(ListaDepartamento.class, "lista");
 			xstream.toXML(lista, new FileOutputStream("Fichero/departamentos.xml"));
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

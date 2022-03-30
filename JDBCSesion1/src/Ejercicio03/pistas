@@ -1,0 +1,20 @@
+Si es el boton buscar
+------------------------------
+String cadenaSQL = "SELECT * FROM Socio"; // o llamar a un procedimiento
+if (!txtbuscar.getText().isEmpty())
+	cadenaSQL = cadenaSQL + "WHERE localidad = '" + txtBuscar.getText() + "'";
+	listado = s.executeQuery (cadenaSQL);
+	listado.last();
+	filas = listado.getRow();
+	
+	Si he recuperado filas entonces
+		Ir a la primera fila del ResultSet
+		Habilitar los botones Anterior/Siguiente
+		Dejar la Posicion <---1
+		Cargar las columnas de la fila en los recuadros del ResultSet
+		...
+		
+	Si no
+			Deshabilitar botones Anterior/Siguiente
+			Limpiar (dejar a "") los recuadros de texto
+			Avisar al usuario que no hemos recuperado registros

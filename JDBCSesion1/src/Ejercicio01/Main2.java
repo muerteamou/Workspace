@@ -15,7 +15,7 @@ public class Main2 {
 		abd.consultarPorLocalidad(consulta);
 		
 		
-		abd.imprimirDatos(abd.consultaTodos());
+		//abd.imprimirDatos(abd.consultaTodos());
 		abd.desconectar();
 
 	}
