@@ -35,37 +35,13 @@ public class AccesoBdatos {
 		}
 	}
 
-	public void consultarPorLocalidad(String localidad) throws SQLException {
+	public ResultSet consultarPorLocalidad(String localidad) throws SQLException {
 		// Preparamos la consulta
 		Statement consulta = conecta.createStatement();
 		// Establecemos la consulta, la ejecutamos y guardamos en un ResulSet
 		ResultSet rs = consulta.executeQuery("SELECT * FROM socio WHERE localidad LIKE " + "'%" + localidad + "%'");
-		// Usamos un if porque dará un resultado o ninguno
-		System.out.println("Lista de socios\n----------------------------------------------------------");
-		int contador = 0;
-		while (rs.next()) {
-			contador++;
-			int id = rs.getInt("socioID");
-			String nombre = rs.getString("nombre");
-			int estatura = rs.getInt("estatura");
-			int edad = rs.getInt("edad");
-			String localidad1 = rs.getString("localidad");
-			System.out.println("Socio nº " + id + ". Nombre: " + nombre + " edad: " + edad + " estatura: " + estatura
-					+ " localidad: " + localidad1);
-		}
-		rs.close();
-		consulta.close();
-		System.out.println("----------------------------------------------------------------------------");
-		System.out.println("Nº total de socios: " + contador);
+		return rs;	
 	}
-	public ResultSet consultaTodos() throws SQLException {
-		Statement consulta = conecta.createStatement();
-		// Establecemos la consulta, la ejecutamos y guardamos en un ResulSet
-		return consulta.executeQuery("SELECT * FROM socio");
-	}
-	
-	//imprimirDatos(consulta.executeQuery("SELECT * FROM socio"));
-	//Probar a meter en consulta todos, a imprimir
 	
 	public void imprimirDatos(ResultSet rs) throws SQLException {
 		System.out.println("Lista de socios\n----------------------------------------------------------");

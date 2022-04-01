@@ -21,16 +21,17 @@ import javax.swing.JButton;
 	
 public class ConsultaSocio extends JFrame implements ActionListener{
 	
-	private JPanel contentPane;
-	private JTextField textLocalidad;
-	private JTextField textNombre;
-	private JTextField textEstatura;
-	private JTextField textEdad;
-	private JTextField textSocio;
-	private JTextField textBuscar;
-	private JButton btnBuscar;
+	private static final long serialVersionUID = 1L;
+	private static JPanel contentPane;
+	private static JTextField textLocalidad;
+	private static JTextField textNombre;
+	private static JTextField textEstatura;
+	private static JTextField textEdad;
+	private static JTextField textSocio;
+	private static JTextField textBuscar;
+	private JButton btnBuscar, btnAnterior, btnSig;
 
-	private static String driver = "com.mysql.cj.jdbc.Driver";
+/*	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
 	private static String hostname = "localhost";
 	private static String port = "3308";
@@ -39,16 +40,19 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 	private static String username = "root";
 	private static String password = "root";
 
-	public Connection conecta;
-	
-	public void WindowsBuilder() {
+	public static Connection conecta;
+	*/
+	public ConsultaSocio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		contentPane.setVisible(true);
+		add(contentPane);
+		
+		
 		JLabel socio = new JLabel("Socio");
 		socio.setBounds(20, 30, 46, 14);
 		contentPane.add(socio);
@@ -115,20 +119,23 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(338, 51, 89, 23);
 		contentPane.add(btnBuscar);
-		btnBuscar.addActionListener(new oyenteBoton());
+		btnBuscar.addActionListener(this);
 		
-		JButton btnAnterior = new JButton("Anterior");
+		btnAnterior = new JButton("Anterior");
 		btnAnterior.setBounds(127, 182, 89, 23);
 		contentPane.add(btnAnterior);
 		btnAnterior.setEnabled(false);
+		btnAnterior.addActionListener(this);
 		
 
-		JButton btnSig = new JButton("Siguiente");
+		btnSig = new JButton("Siguiente");
 		btnSig.setBounds(249, 182, 89, 23);
 		contentPane.add(btnSig);
-		btnSig.setEnabled(false);}
-
-	public void conectar() {
+		btnSig.setEnabled(false);
+		btnSig.addActionListener(this);
+	}
+/*
+	public static void conectar() {
 		try {
 			Class.forName(driver);
 			conecta = DriverManager.getConnection(url, username, password);
@@ -152,7 +159,7 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		String cadenaSQL = "SELECT * FROM socio";
 		//Establecemos la consulta añadiendo a la anterior la localidad
 		if(!textBuscar.getText().isEmpty()) {
-			cadenaSQL = cadenaSQL + "WHERE localidad = '" + textBuscar.getText() + "'";
+			cadenaSQL = cadenaSQL + " WHERE localidad = '" + textBuscar.getText() + "'";
 		}
 		ResultSet rs = consulta.executeQuery(cadenaSQL);
 		while (rs.next()) {
@@ -162,33 +169,22 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 			textEdad.setText(Integer.toString(rs.getInt("edad")));
 			textLocalidad.setText(rs.getString("localidad"));
 		}
-		rs.close();
+		
 		consulta.close();
 	}
+	*/		
+	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					WindowsBuilder frame = new WindowsBuilder();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	class oyenteBoton implements ActionListener{
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==btnBuscar) {
-			try {
-				consultarPorLocalidad(btnBuscar.getText());
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+		ConsultaSocio ventana = new ConsultaSocio();
+		ventana.setVisible(true);
 		}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		
-	}}
+		
+	}
 	
 }
