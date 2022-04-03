@@ -1,24 +1,32 @@
 package Ejercicio03;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class WindowsBuilder extends JFrame {
+@SuppressWarnings("serial")
+public class WindowsBuilder extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private JTextField textLocalidad;
-	private JTextField textNombre;
-	private JTextField textEstatura;
-	private JTextField textEdad;
-	private JTextField textSocio;
-	private JTextField textBuscar;
+	private static JTextField textLocalidad;
+	private static JTextField textNombre;
+	private static JTextField textEstatura;
+	private static JTextField textEdad;
+	private static JTextField textSocio;
+	private static JTextField textBuscar;
+	private static JTextField textNSocio;
+	private static JButton btnBuscar, btnAnt, btnSig;
+	private static ResultSet rs;
+	private static int contador;
 
 	public WindowsBuilder() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,25 +61,33 @@ public class WindowsBuilder extends JFrame {
 		contentPane.add(textSocio);
 		textSocio.setColumns(10);
 		textSocio.setEditable(false);
-		
+
 		textNombre = new JTextField();
 		textNombre.setBounds(90, 52, 167, 20);
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 		textNombre.setEditable(false);
-		
+
 		textEstatura = new JTextField();
 		textEstatura.setBounds(90, 77, 30, 20);
 		contentPane.add(textEstatura);
 		textEstatura.setColumns(10);
 		textEstatura.setEditable(false);
-		
+
 		textEdad = new JTextField();
 		textEdad.setBounds(90, 102, 25, 20);
 		contentPane.add(textEdad);
 		textEdad.setColumns(10);
 		textEdad.setEditable(false);
-		
+
+		textNSocio = new JTextField();
+		textNSocio.setBounds(190, 150, 66, 20);
+		contentPane.add(textNSocio);
+		textNSocio.setBorder(null);
+		textNSocio.setColumns(50);
+		textNSocio.setSize(100, 20);
+		textNSocio.setEditable(false);
+
 		textLocalidad = new JTextField();
 		textLocalidad.setBounds(90, 130, 66, 20);
 		contentPane.add(textLocalidad);
@@ -91,25 +107,25 @@ public class WindowsBuilder extends JFrame {
 		contentPane.add(textBuscar);
 		textBuscar.setColumns(10);
 
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(338, 51, 89, 23);
+		btnBuscar.addActionListener(this);
 		contentPane.add(btnBuscar);
-		
-		JButton btnAnterior = new JButton("Anterior");
-		btnAnterior.setBounds(127, 182, 89, 23);
-		contentPane.add(btnAnterior);
-		btnAnterior.setEnabled(false);
-		
 
-		JButton btnSig = new JButton("Siguiente");
-		btnSig.setBounds(249, 182, 89, 23);
+		btnAnt = new JButton("Anterior");
+		btnAnt.setBounds(127, 200, 89, 23);
+		btnAnt.addActionListener(this);
+		contentPane.add(btnAnt);
+		btnAnt.setEnabled(false);
+
+		btnSig = new JButton("Siguiente");
+		btnSig.setBounds(249, 200, 89, 23);
 		contentPane.add(btnSig);
+		btnSig.addActionListener(this);
 		btnSig.setEnabled(false);
-		
+
 	}
 
-	
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -121,6 +137,64 @@ public class WindowsBuilder extends JFrame {
 				}
 			}
 		});
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnBuscar) {
+			contador = 0;
+			AccesoBdatos abd = new AccesoBdatos();
+			abd.conectar();
+			String busqueda = textBuscar.getText();
+			try {
+				rs = abd.consultarPorLocalidad(busqueda);
+				while (rs.next()) {
+					contador++;
+				}
+				rs.first();
+				textSocio.setText(Integer.toString(rs.getInt("socioID")));
+				textNombre.setText(rs.getString("nombre"));
+				textEstatura.setText(Integer.toString(rs.getInt("estatura")));
+				textEdad.setText(Integer.toString(rs.getInt("edad")));
+				textLocalidad.setText(rs.getString("localidad"));
+				textNSocio.setText("Socio " + rs.getRow() + " de " + contador);
+				btnAnt.setEnabled(true);
+				btnSig.setEnabled(true);
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, "No se encontraron socios de " + busqueda, "Mensaje",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+
+		}
+		if (e.getSource() == btnSig) {
+			try {
+				rs.next();
+				textSocio.setText(Integer.toString(rs.getInt("socioID")));
+				textNombre.setText(rs.getString("nombre"));
+				textEstatura.setText(Integer.toString(rs.getInt("estatura")));
+				textEdad.setText(Integer.toString(rs.getInt("edad")));
+				textLocalidad.setText(rs.getString("localidad"));
+				textNSocio.setText("Socio " + rs.getRow() + " de " + contador);
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, "No existen registros posteriores", "Ultimo socio",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+		if (e.getSource() == btnAnt) {
+			try {
+				rs.previous();
+				textSocio.setText(Integer.toString(rs.getInt("socioID")));
+				textNombre.setText(rs.getString("nombre"));
+				textEstatura.setText(Integer.toString(rs.getInt("estatura")));
+				textEdad.setText(Integer.toString(rs.getInt("edad")));
+				textLocalidad.setText(rs.getString("localidad"));
+				textNSocio.setText("Socio " + rs.getRow() + " de " + contador);
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, "No existen registros anteriores", "Primer socio",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
 	}
 
 }

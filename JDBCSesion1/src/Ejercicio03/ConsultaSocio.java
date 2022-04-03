@@ -30,8 +30,8 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 	private static JTextField textSocio;
 	private static JTextField textBuscar;
 	private JButton btnBuscar, btnAnterior, btnSig;
-
-/*	private static String driver = "com.mysql.cj.jdbc.Driver";
+	private static JFrame frame;
+	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
 	private static String hostname = "localhost";
 	private static String port = "3308";
@@ -41,100 +41,107 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 	private static String password = "root";
 
 	public static Connection conecta;
-	*/
+	
 	public ConsultaSocio() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setVisible(true);
+		frame.setLayout(null);
+		
+		/*
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.setVisible(true);
 		add(contentPane);
-		
+		*/
 		
 		JLabel socio = new JLabel("Socio");
 		socio.setBounds(20, 30, 46, 14);
-		contentPane.add(socio);
+		frame.add(socio);
 
 		JLabel nombre = new JLabel("Nombre");
 		nombre.setBounds(20, 55, 46, 14);
-		contentPane.add(nombre);
+		frame.add(nombre);
 
 		JLabel estatura = new JLabel("Estatura");
 		estatura.setBounds(20, 80, 46, 14);
-		contentPane.add(estatura);
+		frame.add(estatura);
 
 		JLabel edad = new JLabel("Edad");
 		edad.setBounds(20, 105, 46, 14);
-		contentPane.add(edad);
+		frame.add(edad);
 
 		JLabel localidad = new JLabel("Localidad");
 		localidad.setBounds(20, 130, 70, 14);
-		contentPane.add(localidad);
+		frame.add(localidad);
 
 		textSocio = new JTextField();
 		textSocio.setBounds(90, 27, 46, 20);
-		contentPane.add(textSocio);
+		frame.add(textSocio);
 		textSocio.setColumns(10);
 		textSocio.setEditable(false);
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(90, 52, 167, 20);
-		contentPane.add(textNombre);
+		frame.add(textNombre);
 		textNombre.setColumns(10);
 		textNombre.setEditable(false);
 		
 		textEstatura = new JTextField();
 		textEstatura.setBounds(90, 77, 30, 20);
-		contentPane.add(textEstatura);
+		frame.add(textEstatura);
 		textEstatura.setColumns(10);
 		textEstatura.setEditable(false);
 		
 		textEdad = new JTextField();
 		textEdad.setBounds(90, 102, 25, 20);
-		contentPane.add(textEdad);
+		frame.add(textEdad);
 		textEdad.setColumns(10);
 		textEdad.setEditable(false);
 		
 		textLocalidad = new JTextField();
 		textLocalidad.setBounds(90, 130, 66, 20);
-		contentPane.add(textLocalidad);
+		frame.add(textLocalidad);
 		textLocalidad.setColumns(10);
 		textLocalidad.setEditable(false);
 
 		JLabel cm = new JLabel("cm.");
 		cm.setBounds(132, 80, 46, 14);
-		contentPane.add(cm);
+		frame.add(cm);
 
 		JLabel anyos = new JLabel("años");
 		anyos.setBounds(129, 105, 46, 14);
-		contentPane.add(anyos);
+		frame.add(anyos);
 
 		textBuscar = new JTextField();
 		textBuscar.setBounds(338, 20, 86, 20);
-		contentPane.add(textBuscar);
+		frame.add(textBuscar);
+		textBuscar.setEnabled(true);
 		textBuscar.setColumns(10);
 
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(338, 51, 89, 23);
-		contentPane.add(btnBuscar);
+		btnBuscar.setEnabled(true);
+		frame.add(btnBuscar);
 		btnBuscar.addActionListener(this);
 		
 		btnAnterior = new JButton("Anterior");
 		btnAnterior.setBounds(127, 182, 89, 23);
-		contentPane.add(btnAnterior);
+		frame.add(btnAnterior);
 		btnAnterior.setEnabled(false);
 		btnAnterior.addActionListener(this);
 		
-
 		btnSig = new JButton("Siguiente");
 		btnSig.setBounds(249, 182, 89, 23);
-		contentPane.add(btnSig);
+		frame.add(btnSig);
 		btnSig.setEnabled(false);
 		btnSig.addActionListener(this);
 	}
-/*
+
 	public static void conectar() {
 		try {
 			Class.forName(driver);
@@ -152,7 +159,7 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		}
 	}
 	
-	public void consultarPorLocalidad(String localidad) throws SQLException {
+	public static void consultarPorLocalidad() throws SQLException {
 		// Preparamos la consulta
 		Statement consulta = conecta.createStatement();
 		// Establecemos la consulta base por si no se introduce la localidad
@@ -161,8 +168,10 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		if(!textBuscar.getText().isEmpty()) {
 			cadenaSQL = cadenaSQL + " WHERE localidad = '" + textBuscar.getText() + "'";
 		}
+		System.out.println(cadenaSQL);
 		ResultSet rs = consulta.executeQuery(cadenaSQL);
 		while (rs.next()) {
+			rs.first();
 			textSocio.setText(Integer.toString(rs.getInt("socioID")));;
 			textNombre.setText(rs.getString("nombre"));
 			textEstatura.setText(Integer.toString(rs.getInt("estatura")));
@@ -172,18 +181,27 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		
 		consulta.close();
 	}
-	*/		
+			
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		ConsultaSocio ventana = new ConsultaSocio();
 		ventana.setVisible(true);
+		conectar();
+		
 		}
 
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		if(e.getSource()==btnBuscar) {
+			try {
+				consultarPorLocalidad();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}return;
+		}
 		
 	}
 	

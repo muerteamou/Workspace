@@ -34,29 +34,19 @@ public class AccesoBdatos {
 			conecta.close();
 		}
 	}
-
+	
 	public ResultSet consultarPorLocalidad(String localidad) throws SQLException {
 		// Preparamos la consulta
 		Statement consulta = conecta.createStatement();
-		// Establecemos la consulta, la ejecutamos y guardamos en un ResulSet
-		ResultSet rs = consulta.executeQuery("SELECT * FROM socio WHERE localidad LIKE " + "'%" + localidad + "%'");
-		return rs;	
+		// Establecemos la consulta base por si no se introduce la localidad
+		String cadenaSQL = "SELECT * FROM socio";
+		//Establecemos la consulta añadiendo a la anterior la localidad
+		if(!localidad.isEmpty()) {
+			cadenaSQL = cadenaSQL + " WHERE localidad = '" + localidad + "'";
+		}
+		ResultSet rs = consulta.executeQuery(cadenaSQL);
+		return rs;
+		
 	}
 	
-	public void imprimirDatos(ResultSet rs) throws SQLException {
-		System.out.println("Lista de socios\n----------------------------------------------------------");
-		int contador = 0;
-		while (rs.next()) {
-			contador++;
-			int id = rs.getInt("socioID");
-			String nombre = rs.getString("nombre");
-			int estatura = rs.getInt("estatura");
-			int edad = rs.getInt("edad");
-			String localidad1 = rs.getString("localidad");
-			System.out.println("Socio nº " + id + ". Nombre: " + nombre + " edad: " + edad + " estatura: " + estatura
-					+ " localidad: " + localidad1);
-		}
-		System.out.println("----------------------------------------------------------------------------");
-		System.out.println("Nº total de socios: " + contador);
-	}
 }
