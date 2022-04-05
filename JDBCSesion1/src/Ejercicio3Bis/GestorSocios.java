@@ -85,6 +85,7 @@ public class GestorSocios extends JFrame implements ActionListener {
 		textLocalidad = new JTextField();
 		textLocalidad.setBounds(90, 130, 66, 20);
 		contentPane.add(textLocalidad);
+		textLocalidad.setSize(75, 20);
 		textLocalidad.setColumns(10);
 		textLocalidad.setEditable(false);
 
