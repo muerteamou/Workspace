@@ -1,4 +1,4 @@
-package Ejercicio3Bis;
+package Ejercicio03;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
