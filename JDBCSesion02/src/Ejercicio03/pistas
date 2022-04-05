@@ -1,0 +1,39 @@
+Si es el boton buscar
+------------------------------
+String cadenaSQL = "SELECT * FROM Socio"; // o llamar a un procedimiento
+if (!txtbuscar.getText().isEmpty())
+	cadenaSQL = cadenaSQL + "WHERE localidad = '" + txtBuscar.getText() + "'";
+	listado = s.executeQuery (cadenaSQL);
+	listado.last();
+	filas = listado.getRow();
+	
+	Si he recuperado filas entonces
+		Ir a la primera fila del ResultSet
+		Habilitar los botones Anterior/Siguiente
+		Dejar la Posicion <---1
+		Cargar las columnas de la fila en los recuadros del ResultSet
+		...
+		
+	Si no
+			Deshabilitar botones Anterior/Siguiente
+			Limpiar (dejar a "") los recuadros de texto
+			Avisar al usuario que no hemos recuperado registros
+			
+			
+Necesitamos la clase socio, la clase accesobdatos es donde tenemos los datos de conexión
+private static AccesoBdatos abd;
+private Resultset listado;
+private int filas=0, posicion=0;
+
+En el main
+Crear la ventana, crear abd, conectarse
+---------
+al comienzo de la ventana
+objeto abd, resultset listado, filas, posicion.
+
+listado.next() -> se desplaza una fila
+listado.first() -> se desplaza a la primera fila
+listado.last() -> se desplaza a la última fila
+listado.absolute(posicion) -> se desplaza a una determinada posicion 
+
+listado = abd.consultaLocalidadFormulario
