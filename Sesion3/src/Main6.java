@@ -18,6 +18,8 @@ public class Main6 {
 			System.out.println (" - La variable filas vale: " + filas );
 		}
 		//Intentamos borrar el departamento 30
+		// El dep 30 tienes empleados asociados, por lo que no se puede borrar el departamento al tener la tabla empleados
+		// la columna depno como clave foranea
 		numeroDep=30;
 		filas = abd.borrar(numeroDep);
 		if (filas==1)
@@ -28,7 +30,7 @@ public class Main6 {
 		}
 		//
 		//
-		// El departamento 95 no existe y por tanto no se borrará
+		// El departamento 95 no existe y por tanto no se borrarï¿½
 		numeroDep=95;
 		filas = abd.borrar(numeroDep);
 		if (filas==1)

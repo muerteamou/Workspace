@@ -14,7 +14,7 @@ public class Main2 {
 		if (resultado ==1)
 			System.out.println ("Se ha podido insertar el departamento: " + dep);
 		else
-			System.out.println ("Error nº " + resultado + " al insertar el departamento: " + dep);
+			System.out.println ("Error nÂº " + resultado + " al insertar el departamento: " + dep);
 		
 		//
 		dep = new Depto(10, "ASIR2", "Huesca");
@@ -22,7 +22,7 @@ public class Main2 {
 		if (resultado ==1)
 			System.out.println ("Se ha podido insertar el departamento: " + dep);
 		else
-			System.out.println ("Error nº " + resultado + " al insertar el departamento: " + dep);
+			System.out.println ("Error nÂº " + resultado + " al insertar el departamento: " + dep);
 		
 		abd.desconectar();
 
