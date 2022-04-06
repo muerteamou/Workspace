@@ -28,7 +28,8 @@ public class MainG {
 
 		Empleado e1 = new Empleado(10, "CARRERA", "PROFESOR", 7788, sqlfecha, 700, 0, 35);
 		System.out.println(abd.insertarConBean(e1));
-		// Da error 1062 por que no podemos insertar un nº de departamento que no exista previamente en la tabla departamento
+		// Da error 1062 por que no podemos insertar un nº de departamento que no exista
+		// previamente en la tabla departamento
 	}
 
 }
