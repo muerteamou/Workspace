@@ -14,12 +14,10 @@ public class Persona {
 	int edad;
 	String nombre;
 	
-	
 	/**
 	 * 
 	 * @return Devuelve la edad como entero
 	 */
-	
 	public int getEdad() {
 		return edad;
 	}
