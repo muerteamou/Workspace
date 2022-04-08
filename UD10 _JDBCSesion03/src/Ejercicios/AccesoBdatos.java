@@ -110,8 +110,10 @@ public class AccesoBdatos {
 			return 1;	
 		} catch (SQLException e) {
 			return e.getErrorCode();
-		}
-		
+		}				
+	}
+	public int actualizarSalario (int salario, double porcentaje) {
+		String sql = "";
 		
 	}
 }
