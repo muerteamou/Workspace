@@ -94,6 +94,7 @@ public class AccesoBdatos {
 		}
 		return listemp;
 	}
+
 	public int insertarConBean(Empleado emp) {
 		String sql = "INSERT INTO emp VALUES (?,?,?,?,?,?,?,?)";
 		try {
@@ -101,19 +102,45 @@ public class AccesoBdatos {
 			consulta.setInt(1, emp.getEmpno());
 			consulta.setString(2, emp.getEname());
 			consulta.setString(3, emp.getJob());
-			consulta.setInt(4,emp.getMgr());
+			consulta.setInt(4, emp.getMgr());
 			consulta.setDate(5, emp.getHiredate());
 			consulta.setDouble(6, emp.getSal());
 			consulta.setDouble(7, emp.getComm());
-			consulta.setInt(8,emp.getDeptno());
+			consulta.setInt(8, emp.getDeptno());
 			consulta.executeUpdate();
-			return 1;	
+			return 1;
 		} catch (SQLException e) {
 			return e.getErrorCode();
-		}				
+		}
 	}
-	public int actualizarSalario (int salario, double porcentaje) {
-		String sql = "";
-		
+
+	public int actualizarSalario(int departamento, double porcentaje) {
+		int contador;
+		String sql = "UPDATE emp SET SAL = (SAL * 100 * ?) WHERE DEPTNO = ?";
+		PreparedStatement consulta;
+		try {
+			consulta = conecta.prepareStatement(sql);
+
+			consulta.setDouble(1, porcentaje);
+			consulta.setInt(2, departamento);
+			contador = consulta.executeUpdate();
+			return contador;
+		} catch (SQLException e) {
+			return e.getErrorCode();
+		}
+	}
+
+	public int borrarEmpleado(int empleado) {
+		int contador;
+		String sql = "DELETE FROM emp WHERE EMPNO = ?";
+		PreparedStatement consulta;
+		try {
+			consulta = conecta.prepareStatement(sql);
+			consulta.setInt(1, empleado);
+			contador = consulta.executeUpdate();
+			return contador;
+		} catch (SQLException e) {
+			return e.getErrorCode();
+		}
 	}
 }
