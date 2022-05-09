@@ -1,0 +1,51 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-05-05 20:47:12 #1 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is opened by 6068@DESKTOP-U3H3V3J
+
+[2022-05-05 20:47:12 #2 store] 
+Configuration path: ?
+
+[2022-05-05 20:47:12 #3 type] 
+Type empleados.DepartamentoEntity is not enhanced.
+
+[2022-05-05 20:47:12 #4 type] 
+Type empleados.EmpleadoEntity is not enhanced.
+
+[2022-05-05 20:47:12 #5 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is closed by 6068@DESKTOP-U3H3V3J
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-05-05 20:51:19 #1 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is opened by 5604@DESKTOP-U3H3V3J
+
+[2022-05-05 20:51:19 #2 store] 
+Configuration path: ?
+
+[2022-05-05 20:51:19 #3 type] 
+Type empleados.DepartamentoEntity is not enhanced.
+
+[2022-05-05 20:51:19 #4 type] 
+Type empleados.EmpleadoEntity is not enhanced.
+
+[2022-05-05 20:51:19 #5 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is closed by 5604@DESKTOP-U3H3V3J
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-05-05 20:51:52 #1 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is opened by 5568@DESKTOP-U3H3V3J
+
+[2022-05-05 20:51:52 #2 store] 
+Configuration path: ?
+
+[2022-05-05 20:51:52 #3 type] 
+Type empleados.DepartamentoEntity is not enhanced.
+
+[2022-05-05 20:51:52 #4 type] 
+Type empleados.EmpleadoEntity is not enhanced.
+
+[2022-05-05 20:51:52 #5 store] 
+Database 'E:\DAM1Alu7\Programacion\UD09 _BDOO\db\empleados.odb' is closed by 5568@DESKTOP-U3H3V3J
+
