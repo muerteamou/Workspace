@@ -14,7 +14,7 @@ public class MainI {
 		abd.conectar();
 		
 		System.out.println("Subir un 20% el salario de los empleados del Departamento 30");
-		System.out.println(abd.actualizarSalario(30, 0.2)); //→6
+		System.out.println(abd.actualizarSalarioconTransacciones(30, 0.2)); //→6
 		//
 		System.out.println("Subir un 15% el salario de los empleados del Departamento 44");
 		System.out.println(abd.actualizarSalario(44, 0.15));//→0
