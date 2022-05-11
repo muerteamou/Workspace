@@ -11,10 +11,10 @@ public class Ejercicio01 {
 
 		System.out.println("Introduce un número: ");
 		int n = s.nextInt();
-		if (n % 2 == 0)
-			System.out.println("El número " + n + " es par");
-		else
+		if (n % 2 != 0)
 			System.out.println("El número " + n + " es impar");
+		else
+			System.out.println("El número " + n + " es par");
 		s.close();
 	}
 
