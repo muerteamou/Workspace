@@ -37,6 +37,23 @@ public class Main3 {
 			System.out.println("");
 		}
 		
+		for(int i=1; i<= filas; i++) {
+			System.out.print(rs.getMetaData().getColumnName(i) + "\t\t");
+			
+		}
+		System.out.println("");
+		System.out.println("================================================================================================");
+		while(rs.next()) {
+			for(int i=1; i<= filas; i++) {
+				
+				System.out.print(rs.getString(i) + "\t");
+				
+			}
+			System.out.println("");
+		}
+		
+		ps.close(); 
+		conecta.close();
 		
 	} 
 }

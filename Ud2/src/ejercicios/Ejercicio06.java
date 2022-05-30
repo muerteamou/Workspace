@@ -30,11 +30,10 @@ public class Ejercicio06 {
 				x = x - 400;
 				if (x > 500) {
 					x = x - 500;
-					System.out.println("El total a pagar es: " + (x * tramo4 + 500 * tramo3 + 400 * tramo2
-							+ 100 * tramo1) + " €");
-				} else {
 					System.out.println(
-							"El total a pagar es: " + (x * tramo3 + 400 * tramo2 + 100 * tramo1) + " €");
+							"El total a pagar es: " + (x * tramo4 + 500 * tramo3 + 400 * tramo2 + 100 * tramo1) + " €");
+				} else {
+					System.out.println("El total a pagar es: " + (x * tramo3 + 400 * tramo2 + 100 * tramo1) + " €");
 				}
 			} else {
 				System.out.println("El total a pagar es: " + (x * tramo2 + 100 * tramo1) + " €");
