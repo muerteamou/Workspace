@@ -1,4 +1,4 @@
-package calculadora;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import calculadora.Calculadora;
 
 @DisplayName("Ejemplo JUnit5 Calculadora")
 class CalculadoraTest {
